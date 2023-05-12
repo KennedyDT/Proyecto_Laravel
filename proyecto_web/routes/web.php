@@ -22,13 +22,18 @@ Route::get('/operators', function () {
 Route::get('/operators/create',[OperatorsController::class,'create']);
 */
 
-Route::get('/operators', function () {
+/*Route::get('/operators', function () {
     return view('operators.index');
-});
+});*/
 
-Route::get('/operators/index',[OperatorsController::class,'index']);
+//Route::get('/operators/index',[OperatorsController::class,'index'])->name('operators.admin');
 
-Route::resource('operators',OperatorsController::class);
+Route::resource('operators',OperatorsController::class)->names('admin.operators');
+
+Route::resource('productos',OperatorsController::class)->names('admin.productos');
+
+
+Route::get('/items',[ProductosController::class,'index']);
 
 Route::get('/services/index',[ServicesController::class,'index']);
 
@@ -38,7 +43,7 @@ Route::post('/services/store',[ServicesController::class,'store']);
 
 Route::get('/services/show',[ServicesController::class,'show']);
 
-/* Route::put('/services/{service}',[ServicesController::class,'index'])->name('services.update'); 
+/* Route::put('/services/{service}',[ServicesController::class,'index'])->name('services.update');
 */
 
 
@@ -57,7 +62,7 @@ Route::get('/contact', function () {
     return view('views_html.contact');
 });
 
-Route::get('/items',[ProductosController::class,'index']);
+
 
 Route::get('/services',[ServicesController::class,'index']);
 
@@ -72,6 +77,7 @@ Route::get('/services',[ServicesController::class,'index']);
 Auth::routes();
 
 Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
+
 
 
 

@@ -2,6 +2,7 @@
 
 namespace Database\Seeders;
 
+use App\Models\operators;
 use Illuminate\Database\Seeder;
 
 class operatorSeeder extends Seeder
@@ -14,7 +15,7 @@ class operatorSeeder extends Seeder
     public function run()
     {
         operators::create([
-            'name' => 'Nicogas',
+            'name' => 'Nicolas',
             'last_name' => 'Buritica',
             'post' => 'Operario Ventas'
         ]);
@@ -22,13 +23,13 @@ class operatorSeeder extends Seeder
         operators::create([
             'name' => 'Clark Kenn',
             'last_name' => 'Duquecito',
-            'post' => 'Mecanico Principal',
+            'post' => 'Mecanico Principal'
         ]);
 
         operators::create([
             'name' => 'Jhon',
             'last_name' => 'Munozcito',
-            'post' => 'Operario Secundario',
+            'post' => 'Operario Secundario'
         ]);
 
     }

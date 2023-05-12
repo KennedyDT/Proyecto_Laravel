@@ -19,15 +19,15 @@
             <div class="btn-group">
               <input type="tex" name="busqueda" class="form-control" >
               <input type="submit" name="enviar" class="btn btn-primary" >
-              
-              
+
+
             </div>
           </form>
         </div>
 
 
       <table class="table table-light">
-   
+
        <thead class="thead-light">
         <tr>
             <th>#</th>
@@ -36,10 +36,10 @@
             <th>Descripcion</th>
             <th>Cantidad</th>
             <th>Precio</th>
-            
+
         </tr>
          </thead>
-  
+
     <tbody>
         @foreach($data_productos as $producto)
         <tr>
@@ -49,21 +49,21 @@
             <td>{{$producto->Descripcion}}</td>
             <td>{{$producto->Cantidad}}</td>
             <td>{{$producto->Precio}}</td>
-            
-            
-            
+
+
+
         </tr>
         @endforeach
     </tbody>
     </table>
 
-        
+
       </div>
 
 
 
     </div>
 
-    
+
 
 @endsection

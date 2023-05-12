@@ -20,14 +20,14 @@ class ProductosController extends Controller
                  ->orWhere('Marca','LIKE','%'.$busqueda.'%')
                         ->latest('id')
                         ->paginate();
-        
+
         $datos['data_productos'] = $producto;
-        
+
          return view('views_html.items',$datos);
     }
 
     /**
-     * 
+     *
      * Show the form for creating a new resource.
      *
      * @return \Illuminate\Http\Response
@@ -35,6 +35,7 @@ class ProductosController extends Controller
     public function create()
     {
         //
+        return view('productos.create');
     }
 
     /**
@@ -46,6 +47,11 @@ class ProductosController extends Controller
     public function store(Request $request)
     {
         //
+        $data_productos = request() -> except('_token');
+        Productos::insert($data_productos);
+
+        //return response()->json($data_operators);
+        return redirect('productos')->with('mensaje', 'Producto registrado con exito');
     }
 
     /**
@@ -65,9 +71,12 @@ class ProductosController extends Controller
      * @param  \App\Models\Productos  $productos
      * @return \Illuminate\Http\Response
      */
-    public function edit(Productos $productos)
+    public function edit($id)
     {
         //
+        $productos = Productos::findOrFail($id);
+        return view('productos.edit', compact('productos'));
+
     }
 
     /**
@@ -77,9 +86,14 @@ class ProductosController extends Controller
      * @param  \App\Models\Productos  $productos
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, Productos $productos)
+    public function update(Request $request,$id)
     {
         //
+        $data_productos = request() -> except(['_token','_method']);
+        Productos::where('id', '=', $id)-> update($data_productos);
+
+        $productos = Productos::findOrFail($id);
+        return view('productos.edit', compact('productos'));
     }
 
     /**
