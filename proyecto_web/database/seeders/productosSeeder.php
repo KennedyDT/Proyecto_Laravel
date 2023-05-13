@@ -36,7 +36,7 @@ class productosSeeder extends Seeder
              'Descripcion' => 'kit de arrastre completo' ,
              'Cantidad' => '2',
              'Precio' =>'300000'
-         ]);
+        ]);
 
     }
 }

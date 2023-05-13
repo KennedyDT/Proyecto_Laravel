@@ -29,9 +29,13 @@ Route::get('/operators/create',[OperatorsController::class,'create']);
 });*/
 
 
-Route::get('/usuarios', [UserController::class, 'index']);
-/*Route::get('/users/{id}/edit', [UserController::class, 'edit'])->name('users.edit');
-Route::put('/users/{id}', [UserController::class, 'update'])->name('users.update');*/
+Route::get('/usuarios/{user}/editar', [UserController::class, 'edit'])->name('users.edit');
+
+Route::put('/users/{id}', [UserController::class, 'update'])->name('users.update');
+Route::get('/usuarios/crear', [UserController::class, 'create'])->name('users.create');
+Route::post('/usuarios', [UserController::class, 'store'])->name('users.store');
+Route::get('/usuarios', [UserController::class, 'index'])->name('users.index');
+
 
 
 
@@ -46,10 +50,10 @@ Route::get('/index', function () {
     return view('views_html.index');
 });
 
-Route::get('/users', function () {
+/*Route::get('/users', function () {
     return view('users.index');
 
-});
+}); */
 
 Route::get('/', function () {
     return view('views_html.index');

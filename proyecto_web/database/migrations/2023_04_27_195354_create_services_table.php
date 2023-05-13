@@ -23,13 +23,27 @@ class CreateServicesTable extends Migration
             $table->string('users_plate');
 
             $table->string('type_service');
-               
+
             //Información del Operario
             $table->unsignedBigInteger('operators_id');
             $table->string('operators_name');
-          
+
             $table->date('fecha');
             $table->timestamps();
+
+            /*user-id  -id
+            name-user
+
+            descripcion del servicio --string
+            placa de la moto -- string
+
+            operators- id
+            name-operators
+            post-operators
+
+            fecha
+
+            */
 
             $table->foreign('users_id')->references('id')->on('users');
             $table->foreign('operators_id')->references('id')->on('operators');
