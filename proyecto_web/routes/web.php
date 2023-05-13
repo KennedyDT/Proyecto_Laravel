@@ -1,9 +1,11 @@
 <?php
 
+use App\Http\Controllers\UserController;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\OperatorsController;
 use App\Http\Controllers\ProductosController;
 use App\Http\Controllers\ServicesController;
+
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -26,30 +28,29 @@ Route::get('/operators/create',[OperatorsController::class,'create']);
     return view('operators.index');
 });*/
 
-//Route::get('/operators/index',[OperatorsController::class,'index'])->name('operators.admin');
+
+Route::get('/usuarios', [UserController::class, 'index']);
+/*Route::get('/users/{id}/edit', [UserController::class, 'edit'])->name('users.edit');
+Route::put('/users/{id}', [UserController::class, 'update'])->name('users.update');*/
+
+
 
 Route::resource('operators',OperatorsController::class)->names('admin.operators');
 
 Route::resource('productos',OperatorsController::class)->names('admin.productos');
 
-
 Route::get('/items',[ProductosController::class,'index']);
-
-Route::get('/services/index',[ServicesController::class,'index']);
-
-Route::get('/services/create',[ServicesController::class,'create']);
-
-Route::post('/services/store',[ServicesController::class,'store']);
-
-Route::get('/services/show',[ServicesController::class,'show']);
-
-/* Route::put('/services/{service}',[ServicesController::class,'index'])->name('services.update');
-*/
 
 
 Route::get('/index', function () {
     return view('views_html.index');
 });
+
+Route::get('/users', function () {
+    return view('users.index');
+
+});
+
 Route::get('/', function () {
     return view('views_html.index');
 });
@@ -61,16 +62,6 @@ Route::get('/about', function () {
 Route::get('/contact', function () {
     return view('views_html.contact');
 });
-
-
-
-Route::get('/services',[ServicesController::class,'index']);
-
-//Route::get('/items', function () {
-  //  return view('views_html.items');
-//});
-
-
 
 
 
