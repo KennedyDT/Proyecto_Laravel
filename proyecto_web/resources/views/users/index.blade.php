@@ -15,6 +15,7 @@
                             <th>ID</th>
                             <th>Nombre</th>
                             <th>Email</th>
+
                             <th>Acciones</th>
                         </tr>
                     </thead>
@@ -24,6 +25,7 @@
                                 <td>{{ $user->id }}</td>
                                 <td>{{ $user->name }}</td>
                                 <td>{{ $user->email }}</td>
+
                                 <td>
                                 <a href="{{ route('users.edit', $user->id) }}" class="btn btn-primary">Editar</a>
                                 </td>
