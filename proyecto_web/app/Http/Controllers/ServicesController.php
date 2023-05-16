@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Models\services;
 use Illuminate\Http\Request;
 
+
 class ServicesController extends Controller
 {
     /**
@@ -12,6 +13,13 @@ class ServicesController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
+    public function __construct()
+    {
+        $this->middleware('can:admin.services.index')->only('index');
+        $this->middleware('can:admin.services.create')->only('create', 'store');
+        $this->middleware('can:admin.services.edit')->only('edit', 'update');
+        $this->middleware('can:admin.services.destroy')->only('destroy');
+    }
     public function index()
     {
         //
@@ -30,7 +38,7 @@ class ServicesController extends Controller
         //
         $users = users::all();
         $operators = operators::all();
-       
+
         return view('services.create',compact('users','operators'));
     }
 
@@ -50,7 +58,7 @@ class ServicesController extends Controller
         return redirect('services')->with('mensaje', 'Servicio Registrado');*/
         $request->validate([
             'id'=> 'required',
-            'type_service' => 'required', 
+            'type_service' => 'required',
             'date' =>'required|date',
 
             'opeartors_id'=> 'required|exists:operators_id',

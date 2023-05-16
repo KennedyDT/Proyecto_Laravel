@@ -7,6 +7,13 @@ use Illuminate\Http\Request;
 
 class ProductosController extends Controller
 {
+    public function __construct()
+    {
+
+        $this->middleware('can:admin.productos.create')->only('create', 'store');
+        $this->middleware('can:admin.productos.edit')->only('edit', 'update');
+        $this->middleware('can:admin.productos.destroy')->only('destroy');
+    }
     /**
      * Display a listing of the resource.
      *
@@ -16,14 +23,14 @@ class ProductosController extends Controller
     {
         $busqueda=$request->busqueda;
 
-        $producto = productos::where('Nombre','LIKE','%'.$busqueda.'%')
+        $producto = Productos::where('Nombre','LIKE','%'.$busqueda.'%')
                  ->orWhere('Marca','LIKE','%'.$busqueda.'%')
                         ->latest('id')
                         ->paginate();
 
         $datos['data_productos'] = $producto;
 
-         return view('views_html.items',$datos);
+         return view('productos.index',$datos);
     }
 
     /**

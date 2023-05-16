@@ -48,7 +48,7 @@
                         <li class="nav-item"><a class="nav-link" href="{{ url('/index') }}"">Home </a></li>
                         <li class="nav-item active"><a class="nav-link" href="{{ url('/about') }}">Quienes somos </a></li>
                         <li class="nav-item"><a class="nav-link" href="{{ url('/contact') }}">Contacto </a></li>
-                        <li class="nav-item"><a class="nav-link" href="{{ url('/items') }}">Productos </a></li>
+                        <li class="nav-item"><a class="nav-link" href="{{ url('/productos') }}">Productos </a></li>
                     </ul>
 
                     <!-- Right Side Of Navbar -->

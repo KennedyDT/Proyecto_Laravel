@@ -7,15 +7,12 @@
                 <h1>Bienvenido a la página principal</h1>
 
                 <div class="d-grid gap-2">
+
+                    <a href="{{ url('productos') }}" class="btn btn-primary btn-lg">Productos</a>
+                    <a href="{{ url('services') }}" class="btn btn-primary btn-lg">Servicios</a>
+
                     @if(Auth::user()->hasRole('Admin'))
-
-
                         <a href="{{ url('operators') }}" class="btn btn-primary btn-lg">Operarios</a>
-
-                        <a href="{{ url('productos') }}" class="btn btn-primary btn-lg">Productos</a>
-
-                        <a href="{{ url('services') }}" class="btn btn-primary btn-lg">Servicios</a>
-
                         <a href="{{ url('usuarios') }}" class="btn btn-primary btn-lg">Usuarios</a>
                     @endif
 
