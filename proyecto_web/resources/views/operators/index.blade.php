@@ -3,7 +3,7 @@
     <div class="container mt-5">
         <div class="row">
             <div class="col-12">
-                <a href="{{ url('operators/create') }}" class="btn btn-primary">Registar nuevo empleado </a>
+                <a href="{{ url('operators/create') }}" class="btn btn-primary">Registar nuevo operario </a>
             </div>
         </div>
         <div class="row">

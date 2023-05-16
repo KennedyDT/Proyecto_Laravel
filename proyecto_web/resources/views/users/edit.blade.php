@@ -3,7 +3,7 @@
 @section('content')
     <div class="container mt-5">
         <div class="row">
-            <div class="col-md-8 offset-md-2">
+            <div class="col-md-8 ">
                 <h1>Editar usuario</h1>
 
                 <form method="post" action="{{ route('users.update', $user->id) }}">

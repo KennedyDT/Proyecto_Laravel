@@ -41,9 +41,9 @@ Route::get('/usuarios', [UserController::class, 'index'])->name('users.index');
 
 Route::resource('operators',OperatorsController::class)->names('admin.operators');
 
-Route::resource('productos',OperatorsController::class)->names('admin.productos');
+Route::resource('productos',ProductosController::class)->names('admin.productos');
 
-Route::get('/items',[ProductosController::class,'index']);
+
 
 
 Route::get('/index', function () {
