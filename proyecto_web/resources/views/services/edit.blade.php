@@ -2,7 +2,9 @@
 
 @section('content')
     <div class="container mt-5">
-        <h1>Editar Servicio</h1>
+        <div class="row">
+            <div class="col-md-4">
+                <h1>Editar Servicio</h1>
 
         <form method="POST" action="{{ route('services.update', $service->id) }}">
             @csrf
@@ -34,6 +36,11 @@
             </div>
 
             <div class="form-group">
+                <label for="price">Costo del servicio:</label>
+                <input type="integer" name="price" id="price" class="form-control" value="{{ $service->price }}">
+            </div>
+
+            <div class="form-group">
                 <label for="date">Fecha:</label>
                 <input type="date" name="date" id="date" class="form-control" value="{{ $service->date }}">
             </div>
@@ -48,5 +55,8 @@
                 <a href="{{ route('services.index') }}" class="btn btn-secondary">Cancelar</a>
             </div>
         </form>
+            </div>
+        </div>
+
     </div>
 @endsection

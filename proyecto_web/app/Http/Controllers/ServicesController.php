@@ -17,7 +17,7 @@ class ServicesController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    /*
+
     public function __construct()
     {
 
@@ -25,7 +25,7 @@ class ServicesController extends Controller
         $this->middleware('can:admin.services.edit')->only('edit', 'update');
         $this->middleware('can:admin.services.destroy')->only('destroy');
     }
-    */
+
     public function index()
     {
         if (Auth::user()->hasRole('Admin')) {
@@ -63,6 +63,7 @@ class ServicesController extends Controller
             'user_id' => 'required',
             'description' => 'required',
             'operator_id' => 'required',
+            'price' => 'required',
             'date' => 'required',
             'status' => 'required',
         ]);
@@ -119,6 +120,7 @@ class ServicesController extends Controller
         $service->user_id = $request->user_id;
         $service->description = $request->description;
         $service->operator_id = $request->operator_id;
+        $service->price = $request->price;
         $service->date = $request->date;
         $service->status = $request->status;
 

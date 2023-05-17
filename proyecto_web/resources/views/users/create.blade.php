@@ -31,8 +31,11 @@
                         <label for="password">Contraseña:</label>
                         <input type="password" name="password" id="password" class="form-control">
                     </div>
-                    <button type="submit" class="btn btn-primary">Crear Usuario</button>
-                    <a href="{{ route('users.index') }}" class="btn btn-secondary">Regresar</a>
+                    <div class="mt-3">
+                        <button type="submit" class="btn btn-primary">Crear Usuario</button>
+                        <a href="{{ route('users.index') }}" class="btn btn-secondary">Regresar</a>
+                    </div>
+
                 </form>
             </div>
         </div>

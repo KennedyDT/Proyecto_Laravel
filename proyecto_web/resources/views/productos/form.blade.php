@@ -27,7 +27,7 @@
 
         <div class="mt-5">
             <button type="submit" id="save_data" class="btn btn-primary">Guardar</button>
-            <a href="{{ url('productos') }}" class="btn btn-secondary">Regresar</a>
+            <a href="{{ url('productos') }}" class="btn btn-secondary">Cancelar</a>
         </div>
 
 

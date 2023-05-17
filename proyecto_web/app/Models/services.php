@@ -14,6 +14,7 @@ class services extends Model
         'description',
         'operator_id',
         'date',
+        'price',
         'status',
         '_token',
     ];

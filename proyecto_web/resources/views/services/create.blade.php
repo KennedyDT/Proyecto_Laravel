@@ -2,8 +2,8 @@
 
 @section('content')
     <div class="container mt-5">
-        <div class="row justify-content-center">
-            <div class="col-md-8">
+        <div class="row ">
+            <div class="col-md-4">
                 <h1>Crear servicio</h1>
 
                 <form method="POST" action="{{ route('services.store') }}">
@@ -32,6 +32,11 @@
                                 <option value="{{ $operator->id }}">{{ $operator->name }}</option>
                             @endforeach
                         </select>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="price">Costo del servicio:</label>
+                        <input type="integer" name="price" id="price" class="form-control">
                     </div>
 
                     <div class="form-group">

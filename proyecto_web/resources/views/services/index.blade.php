@@ -14,6 +14,7 @@
                     <th>Descripción</th>
                     <th>Nombre del operario</th>
                     <th>Cargo del operario</th>
+                    <th>Costo del servicio</th>
                     <th>Fecha</th>
                     <th>Estado</th>
                     <th>Acciones</th>
@@ -27,6 +28,7 @@
                         <td>{{ $service->description }}</td>
                         <td>{{ $service->operator->name }}</td>
                         <td>{{ $service->operator->post }}</td>
+                        <td>{{ $service->price }}</td>
                         <td>{{ $service->date }}</td>
                         <td>{{ $service->status }}</td>
                         <td>
