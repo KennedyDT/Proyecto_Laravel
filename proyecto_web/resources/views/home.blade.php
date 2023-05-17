@@ -15,6 +15,7 @@
                         <a href="{{ url('operators') }}" class="btn btn-primary btn-lg">Operarios</a>
                         <a href="{{ url('usuarios') }}" class="btn btn-primary btn-lg">Usuarios</a>
                     @endif
+                    <a href="{{route('descargar-pdf')}}" class="btn btn-primary btn-lg">Generar listado de productos(pdf)</a>
 
                 </div>
             </div>

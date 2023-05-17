@@ -115,4 +115,20 @@ class ProductosController extends Controller
         Productos::destroy($id);
         return redirect('productos')->with('mensaje','Producto borrado');
     }
+
+
+
+    public function generar_pdf(){
+        // compact(producto');´
+
+
+     $producto = Productos::all();
+     $pdf = PDF::loadView('Administrador.producto.generar_pdf',compact(producto));
+
+      return $pdf->dowload('productos.pdf');
+
+    }
+    
 }
+
+

@@ -78,3 +78,7 @@ Route::get('/contact', function () {
 
 Auth::routes();
 Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
+
+//Route::get('dowload-pdf','\App\Http\Controller\ProductosController:generar_pdf')->name('descargar-pdf');
+
+Route::get('/dowload-pdf', [ProductosController::class, 'generar_pdf'])->name('descargar-pdf')->middleware('can:admin.productos.descargar-pdf');

@@ -28,6 +28,7 @@ class Roleseeder extends Seeder
         Permission::create(['name' => 'admin.productos.create'])->assignRole($role1);
         Permission::create(['name' => 'admin.productos.edit'])->assignRole($role1);
         Permission::create(['name' => 'admin.productos.destroy'])->assignRole($role1);
+        Permission::create(['name' => 'admin.productos.descargar-pdf'])->assignRole($role1);
 
         Permission::create(['name' => 'admin.services.create'])->assignRole($role1);
         Permission::create(['name' => 'admin.services.edit'])->assignRole($role1);
