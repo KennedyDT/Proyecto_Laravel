@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\Productos;
 use Illuminate\Http\Request;
+use Barryvdh\DomPDF\Facade as PDF;
 
 class ProductosController extends Controller
 {
@@ -92,4 +93,17 @@ class ProductosController extends Controller
     {
         //
     }
+    
+
+    public function generar_pdf(){
+        // compact(producto');´
+
+
+     $producto = productos::all();
+     $pdf = PDF::loadView('Administrador.producto.generar_pdf',compact(producto));
+
+      return $pdf->dowload('productos.pdf');
+
+    }
+    
 }

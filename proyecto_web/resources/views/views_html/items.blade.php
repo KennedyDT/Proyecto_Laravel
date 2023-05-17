@@ -19,6 +19,7 @@
             <div class="btn-group">
               <input type="tex" name="busqueda" class="form-control" >
               <input type="submit" name="enviar" class="btn btn-primary" >
+              <a href="{{route('descargar-pdf')}}" class="btn btn-danger">Generar listado de productos(pdf)</a>
               
               
             </div>

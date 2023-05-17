@@ -38,6 +38,9 @@ Route::post('/services/store',[ServicesController::class,'store']);
 
 Route::get('/services/show',[ServicesController::class,'show']);
 
+Route::get('dowload-pdf','\App\Http\Controller\ProductosController@generar_pdf')->name('descargar-pdf');
+
+
 /* Route::put('/services/{service}',[ServicesController::class,'index'])->name('services.update'); 
 */
 
