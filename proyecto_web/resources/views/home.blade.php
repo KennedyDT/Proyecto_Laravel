@@ -16,6 +16,7 @@
                         <a href="{{ url('usuarios') }}" class="btn btn-primary btn-lg">Usuarios</a>
                     @endif
 
+                    <a href="{{ url('api') }}" class="btn btn-primary btn-lg">Api Usuarios</a>
                 </div>
             </div>
         </div>

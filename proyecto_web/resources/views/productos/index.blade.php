@@ -5,9 +5,7 @@
             <div class="col-12">
                 <h1>Tabla de productos</h1>
                 @can('admin.productos.create')
-
                     <a href="{{ url('productos/create') }}" class="btn btn-primary">Registrar nuevo producto</a>
-
                 @endcan
 
             </div>
@@ -15,12 +13,12 @@
 
         <div class="row">
             <div class="col-12">
-                <form action="{{url('/productos.index')}}" method="GET">
+                <form action="{{ url('/productos.index') }}" method="GET">
                     <div class="btn-group">
-                      <input type="tex" name="busqueda" class="form-control" >
-                      <input type="submit" name="enviar" class="btn btn-primary" >
+                        <input type="tex" name="busqueda" class="form-control">
+                        <input type="submit" name="enviar" class="btn btn-primary">
                     </div>
-                  </form>
+                </form>
                 <table class="table table-light">
                     <thead class="thead-light">
                         <tr>
@@ -29,7 +27,11 @@
                             <th>Descripción</th>
                             <th>Cantidad</th>
                             <th>Precio</th>
-                            <th>Acciones</th>
+                            <th>
+                            @can('admin.productos.create')
+                                Acciones
+                            @endcan
+                            </th>
                         </tr>
                     </thead>
                     <tbody>
@@ -41,17 +43,19 @@
                                 <td>{{ $producto->Cantidad }}</td>
                                 <td>{{ $producto->Precio }}</td>
                                 <td>
-                                    @if(Auth::user()->hasRole('Admin'))
-                                    <a href="{{ url('/productos/' . $producto->id . '/edit') }}" class="btn btn-primary">
-                                        Editar
-                                    </a>
+                                    @can('admin.productos.edit')
+                                        <a href="{{ url('/productos/' . $producto->id . '/edit') }}" class="btn btn-primary">
+                                            Editar
+                                        </a>
 
-                                    <form action="{{ url('/productos/' . $producto->id) }}" method="post">
-                                        @csrf
-                                        {{ method_field('DELETE') }}
-                                        <input type="submit" onclick="return confirm('¿Quieres borrar?')" value="Borrar" class="btn btn-danger">
-                                    </form>
-                                    @endif
+                                        <form action="{{ url('/productos/' . $producto->id) }}" method="post">
+                                            @csrf
+                                            {{ method_field('DELETE') }}
+                                            <input type="submit" onclick="return confirm('¿Quieres borrar?')" value="Borrar"
+                                                class="btn btn-danger">
+                                        </form>
+                                    @endcan
+
                                 </td>
                             </tr>
                         @endforeach

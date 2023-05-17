@@ -17,7 +17,9 @@
                     <th>Costo del servicio</th>
                     <th>Fecha</th>
                     <th>Estado</th>
+                    @can('admin.services.edit')
                     <th>Acciones</th>
+                    @endcan
                 </tr>
             </thead>
             <tbody>
@@ -32,7 +34,9 @@
                         <td>{{ $service->date }}</td>
                         <td>{{ $service->status }}</td>
                         <td>
+                            @can('admin.services.edit')
                             <a href="{{ route('services.edit', $service->id) }}" class="btn btn-primary">Editar</a>
+                            @endcan
                         </td>
                     </tr>
                 @endforeach

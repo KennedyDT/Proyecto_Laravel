@@ -12,6 +12,7 @@
 
     <!-- Scripts -->
     <script src="{{ asset('js/app.js') }}" defer></script>
+    <script src="{{ asset('js/validacion.js') }}" defer></script>
 
     <!-- Fonts -->
     <link rel="dns-prefetch" href="//fonts.gstatic.com">
@@ -47,7 +48,7 @@
                 <div class="collapse navbar-collapse" id="navbarSupportedContent">
                     <!-- Left Side Of Navbar -->
                     <ul class="navbar-nav me-auto">
-                        <li class="nav-item"><a class="nav-link" href="{{ url('/index') }}"">Home </a></li>
+                        <li class="nav-item"><a class="nav-link" href="{{ url('/home') }}"">Home </a></li>
                         <li class="nav-item active"><a class="nav-link" href="{{ url('/about') }}">Quienes somos </a></li>
                         <li class="nav-item"><a class="nav-link" href="{{ url('/contact') }}">Contacto </a></li>
                         <li class="nav-item"><a class="nav-link" href="{{ url('/productos') }}">Productos </a></li>

@@ -78,3 +78,5 @@ Route::get('/contact', function () {
 
 Auth::routes();
 Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
+
+Route::get('/api', [App\Http\Controllers\UserController::class, 'api'])->name('api');
