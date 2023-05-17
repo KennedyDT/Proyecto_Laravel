@@ -32,6 +32,7 @@
                         <input type="password" name="password" id="password" class="form-control">
                     </div>
                     <button type="submit" class="btn btn-primary">Crear Usuario</button>
+                    <a href="{{ route('users.index') }}" class="btn btn-secondary">Regresar</a>
                 </form>
             </div>
         </div>

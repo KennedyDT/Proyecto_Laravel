@@ -3,7 +3,9 @@
     <div class="container mt-5">
         <div class="row">
             <div class="col-12">
+                <h1>Tabla de productos</h1>
                 @can('admin.productos.create')
+
                     <a href="{{ url('productos/create') }}" class="btn btn-primary">Registrar nuevo producto</a>
 
                 @endcan
@@ -57,5 +59,6 @@
                 </table>
             </div>
         </div>
+        <a href="{{ url('/home') }}" class="btn btn-secondary">Regresar</a>
     </div>
 @endsection

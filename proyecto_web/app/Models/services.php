@@ -9,15 +9,26 @@ class services extends Model
 {
     use HasFactory;
 
-public function user()
-{
-    return $this->belongsTo(User::class);
-}
+    protected $fillable = [
+        'user_id',
+        'description',
+        'operator_id',
+        'date',
+        'status',
+        '_token',
+    ];
 
-public function operators()
-{
-    return $this->belongsTo(operators::class);
-}
+    public function user()
+    {
+        return $this->belongsTo(User::class);
+    }
+
+    public function operator()
+    {
+        return $this->belongsTo(operators::class);
+    }
+
+
 
 }
 

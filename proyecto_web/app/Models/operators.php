@@ -8,4 +8,5 @@ use Illuminate\Database\Eloquent\Model;
 class operators extends Model
 {
     use HasFactory;
+
 }

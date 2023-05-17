@@ -4,6 +4,10 @@ namespace App\Http\Controllers;
 
 use App\Models\services;
 use Illuminate\Http\Request;
+use App\Models\operators;
+use App\Models\User;
+use Illuminate\Support\Facades\Auth;
+
 
 
 class ServicesController extends Controller
@@ -13,21 +17,26 @@ class ServicesController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
+    /*
     public function __construct()
     {
-        $this->middleware('can:admin.services.index')->only('index');
+
         $this->middleware('can:admin.services.create')->only('create', 'store');
         $this->middleware('can:admin.services.edit')->only('edit', 'update');
         $this->middleware('can:admin.services.destroy')->only('destroy');
     }
+    */
     public function index()
     {
-        //
-        $services = services::all();
+        if (Auth::user()->hasRole('Admin')) {
+            $data_services = services::with('operator')->get();
+        } else {
+            $userId = Auth::id();
+            $data_services = services::where('user_id', $userId)->with('operator')->get();
+        }
 
-        return view('services.index', compact('services'));
+        return view('services.index', compact('data_services'));
     }
-
     /**
      * Show the form for creating a new resource.
      *
@@ -36,10 +45,10 @@ class ServicesController extends Controller
     public function create()
     {
         //
-        $users = users::all();
-        $operators = operators::all();
+        $data_users = User::all();
+        $data_operators = operators::all();
 
-        return view('services.create',compact('users','operators'));
+        return view('services.create', compact('data_users', 'data_operators'));
     }
 
     /**
@@ -50,25 +59,20 @@ class ServicesController extends Controller
      */
     public function store(Request $request)
     {
-        /*
-        $data_services = request() -> except('_token');
-        operators::insert($data_services);
-
-        //return response()->json($data_services);
-        return redirect('services')->with('mensaje', 'Servicio Registrado');*/
         $request->validate([
-            'id'=> 'required',
-            'type_service' => 'required',
-            'date' =>'required|date',
-
-            'opeartors_id'=> 'required|exists:operators_id',
-            'users_id'=> 'required|exists:users_id',
-
+            'user_id' => 'required',
+            'description' => 'required',
+            'operator_id' => 'required',
+            'date' => 'required',
+            'status' => 'required',
         ]);
 
-        services::create($request->all());
+        $data = $request->except('_token');
 
-        return redirect()->route('srvices.index')->with('success','servicio creado exitosamente.');
+        services::create($data);
+
+        return redirect()->route('services.index')
+            ->with('success', 'El servicio ha sido creado exitosamente.');
     }
 
     /**
@@ -80,9 +84,9 @@ class ServicesController extends Controller
     public function show(services $services)
     {
         //
-        $services=services::findOrFail($services);
+        $services = services::findOrFail($services);
 
-        return view('services.show',compact('services'));
+        return view('services.show', compact('services'));
 
     }
 
@@ -92,14 +96,13 @@ class ServicesController extends Controller
      * @param  \App\Models\services  $services
      * @return \Illuminate\Http\Response
      */
-    public function edit(services $services)
+    public function edit($id)
     {
-        //
-        $services =services::findOrFail($services);
-        $operators =Operator::all();
-        $User =User::all();
+        $service = services::findOrFail($id);
+        $data_users = User::all();
+        $data_operators = operators::all();
 
-        return view('services.edit',compact('services','operators','users'));
+        return view('services.edit', compact('service', 'data_users', 'data_operators'));
     }
 
     /**
@@ -109,9 +112,19 @@ class ServicesController extends Controller
      * @param  \App\Models\services  $services
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, services $services)
+    public function update(Request $request, $id)
     {
-        //
+        $service = services::findOrFail($id);
+
+        $service->user_id = $request->user_id;
+        $service->description = $request->description;
+        $service->operator_id = $request->operator_id;
+        $service->date = $request->date;
+        $service->status = $request->status;
+
+        $service->save();
+
+        return redirect()->route('services.index')->with('success', 'El servicio ha sido actualizado exitosamente.');
     }
 
     /**

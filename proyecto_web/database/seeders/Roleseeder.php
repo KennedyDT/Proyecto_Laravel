@@ -29,6 +29,10 @@ class Roleseeder extends Seeder
         Permission::create(['name' => 'admin.productos.edit'])->assignRole($role1);
         Permission::create(['name' => 'admin.productos.destroy'])->assignRole($role1);
 
+        Permission::create(['name' => 'admin.services.create'])->assignRole($role1);
+        Permission::create(['name' => 'admin.services.edit'])->assignRole($role1);
+        Permission::create(['name' => 'admin.services.destroy'])->assignRole($role1);
+
         Permission::create(['name' => 'admin.users.index'])->assignRole($role1);
         Permission::create(['name' => 'admin.users.create'])->assignRole($role1);
         Permission::create(['name' => 'admin.users.edit'])->assignRole($role1);

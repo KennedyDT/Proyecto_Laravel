@@ -14,41 +14,18 @@ class CreateServicesTable extends Migration
     public function up()
     {
         Schema::create('services', function (Blueprint $table) {
-            // Información de servicios
             $table->id();
-
-            //Información del Usuario
-            $table->unsignedBigInteger('users_id');
-            $table->string('users_name');
-            $table->string('users_plate');
-
-            $table->string('type_service');
-
-            //Información del Operario
-            $table->unsignedBigInteger('operators_id');
-            $table->string('operators_name');
-
-            $table->date('fecha');
+            $table->unsignedBigInteger('user_id');
+            $table->string('description');
+            $table->unsignedBigInteger('operator_id');
+            $table->date('date');
+            $table->string('status');
             $table->timestamps();
 
-            /*user-id  -id
-            name-user
-
-            descripcion del servicio --string
-            placa de la moto -- string
-
-            operators- id
-            name-operators
-            post-operators
-
-            fecha
-
-            */
-
-            $table->foreign('users_id')->references('id')->on('users');
-            $table->foreign('operators_id')->references('id')->on('operators');
-
+            $table->foreign('user_id')->references('id')->on('users')->onDelete('cascade');
+            $table->foreign('operator_id')->references('id')->on('operators')->onDelete('cascade');
         });
+
     }
 
     /**

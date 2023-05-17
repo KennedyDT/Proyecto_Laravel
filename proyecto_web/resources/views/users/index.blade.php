@@ -4,7 +4,7 @@
     <div class="container mt-5">
         <div class="row">
             <div class="col-12">
-                <h1>Usuarios Registrados</h1>
+                <h1>Tabla de usuarios registrados</h1>
 
                 <a href="{{ route('users.create') }}" class="btn btn-primary">Crear Usuario</a>
 
@@ -39,5 +39,6 @@
 
             </div>
         </div>
+        <a href="{{ url('/home') }}" class="btn btn-secondary">Regresar</a>
     </div>
 @endsection

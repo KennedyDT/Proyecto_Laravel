@@ -3,6 +3,7 @@
     <div class="container mt-5">
         <div class="row">
             <div class="col-12">
+                <h1>Tabla de operarios</h1>
                 <a href="{{ url('operators/create') }}" class="btn btn-primary">Registar nuevo operario </a>
             </div>
         </div>
@@ -50,5 +51,6 @@
                 </table>
             </div>
         </div>
+        <a href="{{ url('/home') }}" class="btn btn-secondary">Regresar</a>
     </div>
 @endsection

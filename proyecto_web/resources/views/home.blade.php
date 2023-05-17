@@ -4,7 +4,7 @@
     <div class="container mt-5">
         <div class="row">
             <div class="col-md-6 offset-md-3">
-                <h1>Bienvenido a la página principal</h1>
+                <h1>Bienvenido </h1>
 
                 <div class="d-grid gap-2">
 

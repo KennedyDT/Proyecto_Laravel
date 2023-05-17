@@ -28,6 +28,7 @@ Route::get('/usuarios', [UserController::class, 'index'])->name('users.index')->
 
 Route::resource('operators', OperatorsController::class)->names('admin.operators')->middleware('can:admin.operators');
 
+
 // Ruta sin restricciones de permisos
 Route::get('/productos', [ProductosController::class, 'index'])->name('productos.index');
 
@@ -36,6 +37,27 @@ Route::middleware('can:admin.productos')->group(function () {
     Route::resource('productos', ProductosController::class)->except('index')->names('admin.productos');
 });
 
+
+//Route::resource('services', ServicesController::class)->names('admin.services')->middleware('can:admin.services');
+Route::get('/services/create', [ServicesController::class, 'create'])->name('services.create');
+
+// Ruta para guardar un nuevo servicio
+Route::post('/services', [ServicesController::class, 'store'])->name('services.store');
+
+// Ruta para mostrar la lista de servicios
+Route::get('/services', [ServicesController::class, 'index'])->name('services.index');
+
+// Ruta para mostrar un servicio específico
+Route::get('/services/{service}', [ServicesController::class, 'show'])->name('services.show');
+
+// Ruta para mostrar el formulario de edición de un servicio
+Route::get('/services/{service}/edit', [ServicesController::class, 'edit'])->name('services.edit');
+
+// Ruta para actualizar un servicio
+Route::put('/services/{service}', [ServicesController::class, 'update'])->name('services.update');
+
+// Ruta para eliminar un servicio
+Route::delete('/services/{service}', [ServicesController::class, 'destroy'])->name('services.destroy');
 
 Route::get('/index', function () {
     return view('views_html.index');
