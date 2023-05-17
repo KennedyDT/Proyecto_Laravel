@@ -6,33 +6,25 @@
             <div class="col-12">
                 <h1>Tabla de usuarios registrados</h1>
 
-                @can('admin.users.create')
-                    <a href="{{ route('users.create') }}" class="btn btn-primary">Crear Usuario</a>
-                @endcan
-
                 <table class="table table-light">
                     <thead class="thead-light">
                         <tr>
                             <th>ID</th>
                             <th>Nombre</th>
                             <th>Email</th>
-                            <th>Rol</th>
-                            <th>Acciones</th>
+
                         </tr>
                     </thead>
                     <tbody>
                         @foreach ($users as $user)
+
                             <tr>
-                                <td>{{ $user->id }}</td>
-                                <td>{{ $user->name }}</td>
-                                <td>{{ $user->email }}</td>
+                                <td>{{ $user ['name'] }}</td>
+                                <td>{{ $user ['username'] }}</td>
+                                <td>{{ $user ['email']}}</td>
+
                                 <td>
-                                    @foreach ($user->roles as $role)
-                                        {{ $role->name }}<br>
-                                    @endforeach
-                                </td>
-                                <td>
-                                    <a href="{{ route('users.edit', $user->id) }}" class="btn btn-primary">Editar</a>
+
                                 </td>
                             </tr>
                         @endforeach

@@ -6,6 +6,7 @@ use Illuminate\Http\Request;
 use App\Models\User;
 use Illuminate\Support\Facades\Hash;
 use Spatie\Permission\Models\Role;
+use Illuminate\Support\Facades\Http;
 
 
 
@@ -23,6 +24,17 @@ class UserController extends Controller
     {
         $users = User::all();
         return view('users.index', ['users' => $users]);
+
+
+    }
+
+    public function api()
+    {
+
+
+        $usuarios =Http::get('https://jsonplaceholder.typicode.com/users');
+        $users = $usuarios->json();
+        return view('users.api', compact('users'));
     }
 
     public function edit($id)

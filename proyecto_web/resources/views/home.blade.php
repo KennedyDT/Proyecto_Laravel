@@ -17,6 +17,7 @@
                     @endif
                     <a href="{{route('descargar-pdf')}}" class="btn btn-primary btn-lg">Generar listado de productos(pdf)</a>
 
+                    <a href="{{ url('api') }}" class="btn btn-primary btn-lg">Api Usuarios</a>
                 </div>
             </div>
         </div>

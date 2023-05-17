@@ -28,7 +28,7 @@ class ServicesController extends Controller
 
     public function index()
     {
-        if (Auth::user()->hasRole('Admin')) {
+        if (Auth::user()->hasRole('Admin') || Auth::user()->hasRole('Operator')) {
             $data_services = services::with('operator')->get();
         } else {
             $userId = Auth::id();
