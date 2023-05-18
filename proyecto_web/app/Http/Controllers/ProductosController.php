@@ -4,6 +4,8 @@ namespace App\Http\Controllers;
 
 use App\Models\Productos;
 use Illuminate\Http\Request;
+use PDF;
+
 
 class ProductosController extends Controller
 {
@@ -21,7 +23,7 @@ class ProductosController extends Controller
      */
     public function index(Request $request)
     {
-        $busquda=$request->busqueda;
+        $busqueda=$request->busqueda;
 
         $producto = Productos::where('Marca','LIKE','%'.$busqueda.'%')
                  ->orWhere('Descripcion','LIKE','%'.$busqueda.'%')
@@ -35,10 +37,14 @@ class ProductosController extends Controller
 
     public function pdf()
     {
-        $producto = Productos::paginate();
+        $producto = Productos::all();
         $datos['data_productos'] = $producto;
 
-          return view('productos.pdf',$datos);
+        $pdf = PDF::loadView('productos.pdf',['data_productos' => $producto]);
+        //$pdf->loadHTML('productos.pdf');
+        return $pdf->download();
+
+         // return view('productos.pdf',$datos);
     }
     /**
      *

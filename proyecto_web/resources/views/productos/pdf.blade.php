@@ -1,8 +1,8 @@
 @extends('layouts.app')
 @section('content')
-    <div class="container mt-5">
-        <div class="row">
-            <div class="col-12">
+    <div >
+        <div >
+            <div >
                 <h1>Tabla de productos</h1>
                
 
@@ -10,11 +10,11 @@
         </div>
         
 
-        <div class="row">
-            <div class="col-12">
+        <div >
+            <div >
               
-                <table class="table table-light">
-                    <thead class="thead-light">
+                <table >
+                    <thead >
                         <tr>
                             <th>#</th>
                             <th>Marca</th>
@@ -41,6 +41,6 @@
                 </table>
             </div>
         </div>
-        <a href="{{ url('/home') }}" class="btn btn-secondary">Regresar</a>
+        
     </div>
 @endsection

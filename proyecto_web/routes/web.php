@@ -85,4 +85,5 @@ Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name
 
 
 Route::get('/pdf', [App\Http\Controllers\ProductosController::class, 'pdf'])->name('pdf');
+Route::get('/pdf', [App\Http\Controllers\ProductosController::class, 'pdf'])->name('pdf');
 Route::get('/api', [App\Http\Controllers\UserController::class, 'api'])->name('api');
