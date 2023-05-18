@@ -14,9 +14,12 @@
                         <a href="{{ url('operators') }}" class="btn btn-primary btn-lg">Operarios</a>
                         <a href="{{ url('usuarios') }}" class="btn btn-primary btn-lg">Usuarios</a>
                     @endif
-                    <a href="{{ url('pdf') }}" class="btn btn-primary btn-lg">Generar listado de productos(pdf)</a>
-                    
                     <a href="{{ url('api') }}" class="btn btn-primary btn-lg">Api Usuarios</a>
+
+                    <a href="{{ url('pdf') }}" class="btn btn-danger">Generar listado de productos(pdf)</a>
+                    <a href="{{ url('pdf_servicios') }}" class="btn btn-danger">Generar listado de servicios(pdf)</a>
+                    
+                    
                 </div>
             </div>
         </div>

@@ -7,7 +7,8 @@ use Illuminate\Http\Request;
 use App\Models\operators;
 use App\Models\User;
 use Illuminate\Support\Facades\Auth;
-
+use Barryvdh\DomPDF\Facade\Pdf;
+use Illuminate\Support\Facades\Storage;
 
 
 class ServicesController extends Controller
@@ -37,6 +38,26 @@ class ServicesController extends Controller
 
         return view('services.index', compact('data_services'));
     }
+    public function pdf()
+    {
+        if (Auth::user()->hasRole('Admin') || Auth::user()->hasRole('Operator')) {
+            $data_services = services::with('operator')->get();
+        } else {
+            $userId = Auth::id();
+            $data_services = services::where('user_id', $userId)->with('operator')->get();
+        }
+
+
+        $pdf = PDF::loadView('services.pdf_servicios',compact('data_services'));
+        //$pdf->loadHTML('productos.pdf');
+       
+
+        return $pdf->download();
+        
+
+        //  return view('productos.pdf',$datos);
+    }
+
     /**
      * Show the form for creating a new resource.
      *
