@@ -40,16 +40,17 @@ class ProductosController extends Controller
     public function pdf()
     {
         $producto = Productos::paginate();
+        
         $datos['data_productos'] = $producto;
 
         $pdf = PDF::loadView('productos.pdf',$datos);
-        $pdf->loadHTML('productos.pdf');
+        //$pdf->loadHTML('productos.pdf');
        
 
-        //return $pdf->stream();;
+        return $pdf->download();
         
 
-          return view('productos.pdf',$datos);
+        //  return view('productos.pdf',$datos);
     }
     /**
      *
