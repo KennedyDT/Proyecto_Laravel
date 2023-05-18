@@ -21,10 +21,10 @@ class ProductosController extends Controller
      */
     public function index(Request $request)
     {
-        $busqueda=$request->busqueda;
+        $busquda=$request->busqueda;
 
-        $producto = Productos::where('Nombre','LIKE','%'.$busqueda.'%')
-                 ->orWhere('Marca','LIKE','%'.$busqueda.'%')
+        $producto = Productos::where('Marca','LIKE','%'.$busqueda.'%')
+                 ->orWhere('Descripcion','LIKE','%'.$busqueda.'%')
                         ->latest('id')
                         ->paginate();
 
@@ -33,6 +33,13 @@ class ProductosController extends Controller
          return view('productos.index',$datos);
     }
 
+    public function pdf()
+    {
+        $producto = Productos::paginate();
+        $datos['data_productos'] = $producto;
+
+          return view('productos.pdf',$datos);
+    }
     /**
      *
      * Show the form for creating a new resource.
@@ -116,18 +123,6 @@ class ProductosController extends Controller
         return redirect('productos')->with('mensaje','Producto borrado');
     }
 
-
-
-    public function generar_pdf(){
-        // compact(producto');´
-
-
-     $producto = Productos::all();
-     $pdf = PDF::loadView('Administrador.producto.generar_pdf',compact(producto));
-
-      return $pdf->dowload('productos.pdf');
-
-    }
     
 }
 

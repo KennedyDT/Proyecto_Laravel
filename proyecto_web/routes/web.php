@@ -76,10 +76,13 @@ Route::get('/contact', function () {
 });
 
 
+
+
 Auth::routes();
 Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
 
 
 
-Route::get('/generador_pdf',[\App\Http\Controller\ProductosController::class,'pdf')->name('generador_pdf.pdf');
+
+Route::get('/pdf', [App\Http\Controllers\ProductosController::class, 'pdf'])->name('pdf');
 Route::get('/api', [App\Http\Controllers\UserController::class, 'api'])->name('api');

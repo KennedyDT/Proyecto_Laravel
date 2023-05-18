@@ -15,7 +15,7 @@
             <div class="col-12">
                 <form action="{{ url('/productos.index') }}" method="GET">
                     <div class="btn-group">
-                        <input type="tex" name="busqueda" class="form-control">
+                        <input type="text" name="busqueda" class="form-control">
                         <input type="submit" name="enviar" class="btn btn-primary">
                     </div>
                 </form>

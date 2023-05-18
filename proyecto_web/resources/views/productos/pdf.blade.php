@@ -8,15 +8,11 @@
 
             </div>
         </div>
+        
 
         <div class="row">
             <div class="col-12">
-                <form action="{{url('/productos.index')}}" method="GET">
-                    <div class="btn-group">
-                      <input type="tex" name="busqueda" class="form-control" >
-                      <input type="submit" name="enviar" class="btn btn-primary" >
-                    </div>
-                  </form>
+              
                 <table class="table table-light">
                     <thead class="thead-light">
                         <tr>
@@ -25,7 +21,7 @@
                             <th>Descripción</th>
                             <th>Cantidad</th>
                             <th>Precio</th>
-                            <th>Acciones</th>
+                            
                         </tr>
                     </thead>
                     <tbody>
@@ -37,17 +33,7 @@
                                 <td>{{ $producto->Cantidad }}</td>
                                 <td>{{ $producto->Precio }}</td>
                                 <td>
-                                    @if(Auth::user()->hasRole('Admin'))
-                                    <a href="{{ url('/productos/' . $producto->id . '/edit') }}" class="btn btn-primary">
-                                        Editar
-                                    </a>
-
-                                    <form action="{{ url('/productos/' . $producto->id) }}" method="post">
-                                        @csrf
-                                        {{ method_field('DELETE') }}
-                                        <input type="submit" onclick="return confirm('¿Quieres borrar?')" value="Borrar" class="btn btn-danger">
-                                    </form>
-                                    @endif
+                                    
                                 </td>
                             </tr>
                         @endforeach
