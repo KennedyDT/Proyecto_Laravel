@@ -1,5 +1,6 @@
 @extends('layouts.app')
 @section('content')
+
     <div class="container mt-5">
         <div class="row">
             <div class="col-12">
@@ -62,7 +63,11 @@
                     </tbody>
                 </table>
             </div>
+            <h1> Gráfica de líneas</h1>
+   
+   
         </div>
         <a href="{{ url('/home') }}" class="btn btn-secondary">Regresar</a>
     </div>
+
 @endsection

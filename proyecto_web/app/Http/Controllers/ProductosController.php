@@ -41,7 +41,7 @@ class ProductosController extends Controller
         $datos['data_productos'] = $producto;
 
         $pdf = PDF::loadView('productos.pdf',['data_productos' => $producto]);
-        //$pdf->loadHTML('productos.pdf');
+        $pdf->loadHTML('productos.pdf');
         return $pdf->download();
 
          // return view('productos.pdf',$datos);
