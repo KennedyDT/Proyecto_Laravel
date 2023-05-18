@@ -4,7 +4,9 @@ namespace App\Http\Controllers;
 
 use App\Models\Productos;
 use Illuminate\Http\Request;
-use PDF;
+use Barryvdh\DomPDF\Facade\Pdf;
+use Illuminate\Support\Facades\Storage;
+
 
 
 class ProductosController extends Controller
@@ -37,14 +39,17 @@ class ProductosController extends Controller
 
     public function pdf()
     {
-        $producto = Productos::all();
+        $producto = Productos::paginate();
         $datos['data_productos'] = $producto;
 
-        $pdf = PDF::loadView('productos.pdf',['data_productos' => $producto]);
+        $pdf = PDF::loadView('productos.pdf',$datos);
         $pdf->loadHTML('productos.pdf');
-        return $pdf->download();
+       
 
-         // return view('productos.pdf',$datos);
+        //return $pdf->stream();;
+        
+
+          return view('productos.pdf',$datos);
     }
     /**
      *
