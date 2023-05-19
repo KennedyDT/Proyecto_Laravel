@@ -1,9 +1,11 @@
 @extends('layouts.app')
 @section('content')
 
+
     <div class="container mt-5">
         <div class="row">
             <div class="col-12">
+
                 <h1>Tabla de productos</h1>
                 @can('admin.productos.create')
                     <a href="{{ url('productos/create') }}" class="btn btn-primary">Registrar nuevo producto</a>
@@ -63,11 +65,17 @@
                     </tbody>
                 </table>
             </div>
-            <h1> Gráfica de líneas</h1>
+            
    
    
         </div>
         <a href="{{ url('/home') }}" class="btn btn-secondary">Regresar</a>
+        <a href="{{ url('/grafica') }}" class="btn btn-primary">visualizacion grafica</a>
     </div>
+           
+
+
+  
+
 
 @endsection

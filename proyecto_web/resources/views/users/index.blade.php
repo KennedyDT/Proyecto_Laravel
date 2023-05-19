@@ -44,3 +44,4 @@
         <a href="{{ url('/home') }}" class="btn btn-secondary">Regresar</a>
     </div>
 @endsection
+

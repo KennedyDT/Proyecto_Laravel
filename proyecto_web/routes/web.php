@@ -88,3 +88,5 @@ Route::get('/pdf', [App\Http\Controllers\ProductosController::class, 'pdf'])->na
 
 Route::get('/pdf_servicios', [App\Http\Controllers\ServicesController::class, 'pdf'])->name('pdf_servicios');
 Route::get('/api', [App\Http\Controllers\UserController::class, 'api'])->name('api');
+
+Route::get('/grafica', [App\Http\Controllers\ProductosController::class, 'grafica'])->name('grafica');

@@ -37,6 +37,8 @@ class ProductosController extends Controller
          return view('productos.index',$datos);
     }
 
+    
+
     public function pdf()
     {
         $producto = Productos::paginate();
@@ -52,6 +54,10 @@ class ProductosController extends Controller
 
         //  return view('productos.pdf',$datos);
     }
+
+
+
+
     /**
      *
      * Show the form for creating a new resource.
@@ -134,8 +140,16 @@ class ProductosController extends Controller
         Productos::destroy($id);
         return redirect('productos')->with('mensaje','Producto borrado');
     }
+public function grafica()
+    {
+        $producto = Productos::paginate();
+        
+        $datos['data_productos'] = $producto;
 
+
+        return view('productos.grafica',$datos) ;
     
 }
 
 
+}
