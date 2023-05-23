@@ -1,11 +1,5 @@
-<div>   <canvas id="polarChart" ></canvas></div>
 
-<div><canvas id="bubbleChart" ></canvas>
-</div>  
-
-
-
-<script src="https://cdn.jsdelivr.net/npm/chart.js">
+<script>
 
 
 // Obtén los datos de la tabla de productos
@@ -70,9 +64,31 @@ beginAtZero: true,
 
 </script>
 
-
 <div>
-  <canvas id="myChart"></canvas>
+<script>
+const canvases = document.querySelectorAll('canvas');
+
+canvases.forEach(canvas => {
+  console.log('Altura:',canvas.height,'px ,anchura',canvas.width);
+  const ctx = canvas.getContext('2d');
+  ctx.fillRect(25, 25, 100, 100);
+  ctx.clearRect(45, 45, 60, 60);
+  ctx.strokeRect(50, 50, 50, 50);
+});
+canvas {
+  height: 100px;
+  width: 200px;
+  border : 1px solid red;
+}
+
+
+
+</script>
+<h1>Grafica de cantidad de productos</h1>
+
+<canvas id="polarChart" class="col-md-8 centrar-div" height="100" ></canvas>
+<canvas id="bubbleChart" class="col-md-8 centrar-div" height="100" ></canvas>
+
 </div>
 
 <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
@@ -87,7 +103,9 @@ beginAtZero: true,
       datasets: [{
         label: '# of Votes',
         data: [12, 19, 3, 5, 2, 3],
-        borderWidth: 1
+        backgroundColor: "rgba(255, 99, 132, 0.5)",
+        borderColor: "rgba(255, 99, 132, 1)",
+borderWidth: 1,
       }]
     },
     options: {
